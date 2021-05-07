@@ -15,8 +15,10 @@ export class CreateStatementController {
     const { amount, description } = request.body;
     const { reciver_id } = request.params
 
+    //console.log(request.body)
+
     const splittedPath = request.originalUrl.split('/')
-    const type = splittedPath[splittedPath.length - 1] as OperationType;
+    const type = splittedPath[splittedPath.length - 2] as OperationType;
 
     if(type === 'transfer') {
       const createStatement = container.resolve(CreateStatementUseCase);
